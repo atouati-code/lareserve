@@ -15,14 +15,12 @@
 html{scroll-behavior:smooth}
 body{font-family:'Montserrat',sans-serif;color:var(--text);background:var(--green-dark);overflow-x:hidden}
 
-/* ── LOGO ── */
 .logo-svg{display:flex;align-items:center;gap:12px;text-decoration:none}
 .logo-svg svg{height:52px;width:auto;flex-shrink:0}
 .logo-text-wrap{display:flex;flex-direction:column;line-height:1}
 .logo-name{font-family:'Dancing Script',cursive;font-size:1.4rem;color:#fff;font-weight:600}
 .logo-sub{font-size:.42rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:2px}
 
-/* ── NAV ── */
 nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:22px 56px;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
 nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14px 56px;box-shadow:0 2px 30px rgba(0,0,0,.2)}
 .nav-links{display:flex;gap:36px;list-style:none}
@@ -33,7 +31,6 @@ nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
 .hamburger span{width:24px;height:1px;background:#fff}
 
-/* ── HERO ── */
 .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .hero-slides{position:absolute;inset:0}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease;background-size:cover;background-position:center}
@@ -55,7 +52,6 @@ nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14
 .dot{width:22px;height:1px;background:rgba(255,255,255,.35);cursor:pointer;transition:.3s}
 .dot.active{width:44px;background:var(--beige)}
 
-/* ── INTRO ── */
 .intro-wrap{background:var(--cream)}
 .intro{padding:100px 80px;display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;max-width:1400px;margin:0 auto}
 .pre{font-size:.6rem;letter-spacing:6px;text-transform:uppercase;color:var(--green);margin-bottom:18px;font-weight:500}
@@ -68,14 +64,12 @@ nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14
 .divider{width:40px;height:1px;background:var(--green);margin:20px 0 28px}
 .divider-center{margin:20px auto 28px}
 
-/* ── STATS ── */
 .stats{background:var(--green-dark);padding:64px 56px;display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
 .stat{padding:36px 20px;border-right:1px solid rgba(245,230,163,.12)}
 .stat:last-child{border:none}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:3.2rem;color:var(--beige);font-weight:300}
 .stat-label{font-size:.58rem;letter-spacing:4px;text-transform:uppercase;color:rgba(245,230,163,.5);margin-top:10px}
 
-/* ── ROOM FEATURES ── */
 .rooms-showcase{background:var(--cream)}
 .section-header{text-align:center;padding:100px 48px 56px}
 .section-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--green-dark)}
@@ -96,7 +90,6 @@ nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14
 .room-price-tag{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);margin-bottom:6px}
 .room-price-val{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--green-dark);font-weight:300}
 
-/* ── EXPERIENCES avec vraies photos extérieures ── */
 .experiences{background:var(--green-dark)}
 .experiences .section-header{padding-bottom:56px}
 .experiences .section-header h2{color:#fff}
@@ -111,7 +104,6 @@ nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14
 .exp-desc{font-size:.73rem;line-height:1.75;color:rgba(255,255,255,.78);max-height:0;overflow:hidden;transition:max-height .5s}
 .exp-card:hover .exp-desc{max-height:120px}
 
-/* ── GALERIE ── */
 .gallery-section{background:var(--green-dark);padding:6px}
 .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:260px;gap:6px}
 .gal-item{overflow:hidden;cursor:pointer;position:relative}
@@ -129,7 +121,6 @@ nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14
 .gal-plus{color:#fff;font-size:1.8rem;opacity:0;transition:.4s;transform:scale(.6)}
 .gal-item:hover .gal-plus{opacity:1;transform:scale(1)}
 
-/* ── TÉMOIGNAGES ── */
 .testimonials{background:var(--cream);padding:100px 56px;text-align:center}
 .testimonials h2{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--green-dark);font-weight:300;margin-bottom:60px}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;max-width:1200px;margin:0 auto}
@@ -138,7 +129,6 @@ nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14
 .testi-text{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--text);font-style:italic;line-height:1.85;margin-bottom:24px}
 .testi-author{font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-light)}
 
-/* ── LOCALISATION ── */
 .location{background:var(--beige-soft);display:grid;grid-template-columns:1fr 1fr}
 .location-map{min-height:520px;overflow:hidden}
 .location-map iframe{width:100%;height:100%;border:none;filter:sepia(.25) saturate(.9)}
@@ -151,7 +141,6 @@ nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14
 .loc-text{font-size:.73rem;color:var(--text-light);line-height:1.65}
 .loc-text strong{display:block;color:var(--green-dark);margin-bottom:3px;font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase}
 
-/* ── BOOKING ── */
 .booking{position:relative;padding:130px 56px;text-align:center;color:#fff;overflow:hidden}
 .booking-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
 .booking-bg::after{content:'';position:absolute;inset:0;background:rgba(20,45,30,.78)}
@@ -165,7 +154,6 @@ nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14
 .booking-form button{background:var(--beige);color:var(--green-dark);border:none;padding:20px 28px;font-family:'Montserrat',sans-serif;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:.3s;font-weight:500;white-space:nowrap}
 .booking-form button:hover{background:var(--beige-dark)}
 
-/* ── FOOTER ── */
 footer{background:var(--green-dark);padding:80px 56px 36px}
 .footer-top{border-bottom:1px solid rgba(245,230,163,.1);padding-bottom:60px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:36px}
 .footer-brand p{font-size:.75rem;line-height:1.85;max-width:270px;margin-top:20px;color:rgba(255,255,255,.45)}
@@ -178,7 +166,6 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
 .social-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;transition:.3s}
 .social-links a:hover{color:var(--beige)}
 
-/* ── LIGHTBOX ── */
 .lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(8,20,12,.96);align-items:center;justify-content:center}
 .lightbox.open{display:flex}
 .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain}
@@ -189,7 +176,6 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
 .lb-prev:hover,.lb-next:hover{opacity:1;color:var(--beige)}
 .lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:.6rem;letter-spacing:3px}
 
-/* ── LOADING ── */
 #loading{position:fixed;inset:0;background:var(--green-dark);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .8s}
 #loading.done{opacity:0;pointer-events:none}
 .load-logo{font-family:'Dancing Script',cursive;font-size:2.5rem;color:var(--beige)}
@@ -197,11 +183,9 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
 .load-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--beige);animation:lb 2s ease forwards}
 @keyframes lb{to{left:0}}
 
-/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s ease}
 .reveal.visible{opacity:1;transform:none}
 
-/* ── RESPONSIVE ── */
 @media(max-width:1024px){
   .intro{grid-template-columns:1fr;gap:40px;padding:70px 36px}
   .room-feature,.room-feature.reverse{grid-template-columns:1fr}
@@ -235,13 +219,11 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
 </head>
 <body>
 
-<!-- LOADING -->
 <div id="loading">
   <div class="load-logo">La Réserve</div>
   <div class="load-bar"></div>
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lb">
   <button class="lb-close" onclick="closeLB()">✕</button>
   <button class="lb-prev" onclick="lbNav(-1)">‹</button>
@@ -250,7 +232,6 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
   <div class="lb-counter" id="lb-counter"></div>
 </div>
 
-<!-- NAV -->
 <nav id="nav">
   <a href="#" class="logo-svg">
     <svg viewBox="0 0 793.70135 1122.52" xmlns="http://www.w3.org/2000/svg" style="height:60px;width:auto">
@@ -284,11 +265,11 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
   <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- HERO — 3 slides : zèbres (img1), piscine palmiers (img9), coucher soleil (img3) -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-slides">
-    <div class="slide active" id="s0"></div>
-    <div class="slide" id="s1"></div>
+    <div class="slide active" id="s0" style="background-image:linear-gradient(rgba(20,45,30,.45),rgba(15,35,22,.58)),url('https://github.com/atouati-code/lareserve/blob/main/4d907720-89c4-4e92-ab95-7b7a7310e228.png?raw=true');background-size:cover;background-position:center"></div>
+    <div class="slide" id="s1" style="background-image:linear-gradient(rgba(20,45,30,.45),rgba(15,35,22,.58)),url('https://github.com/atouati-code/lareserve/blob/main/c97b6202-579c-4c92-9036-b2269849fb51.png?raw=true');background-size:cover;background-position:center"></div>
     <div class="slide" id="s2"></div>
   </div>
   <div class="hero-content reveal">
@@ -311,7 +292,7 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
   </div>
 </section>
 
-<!-- INTRO — photo lodge + zèbres (img1) -->
+<!-- INTRO -->
 <section class="intro-wrap">
   <div class="intro">
     <div class="intro-text reveal">
@@ -323,20 +304,20 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
       <a href="#rooms" class="intro-link">Voir nos hébergements →</a>
     </div>
     <div class="intro-img reveal">
-      <img id="introImg" src="" alt="La Réserve — lodge et zèbres"/>
+      <img id="introImg" src="https://github.com/atouati-code/lareserve/blob/main/4d907720-89c4-4e92-ab95-7b7a7310e228.png?raw=true" alt="La Réserve — lodge et zèbres"/>
     </div>
   </div>
 </section>
 
 <!-- STATS -->
 <section class="stats">
-  <div class="stat reveal"><div class="stat-num">6</div><div class="stat-label">Chambres uniques</div></div>
-  <div class="stat reveal"><div class="stat-num">2</div><div class="stat-label">Piscines</div></div>
+  <div class="stat reveal"><div class="stat-num">7</div><div class="stat-label">Chambres uniques</div></div>
+  <div class="stat reveal"><div class="stat-num">1</div><div class="stat-label">Piscine</div></div>
   <div class="stat reveal"><div class="stat-num">+20</div><div class="stat-label">Espèces animales</div></div>
   <div class="stat reveal"><div class="stat-num">5★</div><div class="stat-label">Expérience client</div></div>
 </section>
 
-<!-- ROOMS — 4 chambres avec vraies photos -->
+<!-- ROOMS — 7 chambres avec vrais noms -->
 <section class="rooms-showcase" id="rooms">
   <div class="section-header reveal">
     <p class="pre">Hébergements</p>
@@ -344,72 +325,113 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
     <h2>Nos chambres & suites</h2>
   </div>
 
+  <!-- 01 Girafe -->
   <div class="room-feature reveal">
-    <div class="room-img"><img id="rc1" src="" alt="Suite Dorée"/></div>
+    <div class="room-img"><img id="rc1" src="" alt="Chambre Girafe"/></div>
     <div class="room-body">
       <div class="room-num">01</div>
       <p class="room-tag">Suite signature</p>
-      <h3 class="room-name">Suite Dorée</h3>
-      <p class="room-desc">Sous une charpente en étoile de branches naturelles, la Suite Dorée s'ouvre sur une lumière d'or filtrée par de grands rideaux en lin. Spacieuse, épurée, avec un lit à baldaquin dressé au cœur d'un volume généreux.</p>
+      <h3 class="room-name">Girafe</h3>
+      <p class="room-desc">Sous une charpente en étoile de branches naturelles, la chambre Girafe s'ouvre sur une lumière d'or filtrée par de grands rideaux en lin. Spacieuse, épurée, avec un lit à baldaquin dressé au cœur d'un volume généreux.</p>
       <div class="room-amenities">
         <span class="amenity">Charpente étoile</span><span class="amenity">Lit baldaquin</span>
         <span class="amenity">Rideaux lin</span><span class="amenity">Clim & ventilateur</span>
       </div>
-      <p class="room-price-tag">À partir de</p>
-      <p class="room-price-val">175 000 FCFA <span style="font-size:1rem;color:var(--text-light)">/nuit</span></p>
     </div>
   </div>
 
+  <!-- 02 Cerf -->
   <div class="room-feature reverse reveal">
-    <div class="room-img"><img id="rc2" src="" alt="Suite Baobab"/></div>
+    <div class="room-img"><img id="rc2" src="" alt="Chambre Cerf"/></div>
     <div class="room-body">
       <div class="room-num">02</div>
       <p class="room-tag">Suite duplex</p>
-      <h3 class="room-name">Suite Baobab</h3>
+      <h3 class="room-name">Cerf</h3>
       <p class="room-desc">Vaste suite avec salon indépendant, plafond en branches de baobab et lit à baldaquin drapé de voilages blancs. Une décoration raffinée mêle art africain contemporain et mobilier blanc immaculé.</p>
       <div class="room-amenities">
         <span class="amenity">Salon privé</span><span class="amenity">Plafond branches</span>
         <span class="amenity">TV & Clim</span><span class="amenity">Sol terrazzo</span>
       </div>
-      <p class="room-price-tag">À partir de</p>
-      <p class="room-price-val">150 000 FCFA <span style="font-size:1rem;color:var(--text-light)">/nuit</span></p>
     </div>
   </div>
 
+  <!-- 03 Girafons -->
   <div class="room-feature reveal">
-    <div class="room-img"><img id="rc3" src="" alt="Suite Rose"/></div>
+    <div class="room-img"><img id="rc3" src="" alt="Chambre Girafons"/></div>
     <div class="room-body">
       <div class="room-num">03</div>
-      <p class="room-tag">Chambre romantique</p>
-      <h3 class="room-name">Suite Rose</h3>
-      <p class="room-desc">Lumineuse et chaleureuse, la Suite Rose joue avec les tons corail et blanc. Son lit à baldaquin dressé face aux grandes fenêtres et son pouf rose sculptural créent une atmosphère à la fois douce et élégante.</p>
+      <p class="room-tag">Chambre familiale</p>
+      <h3 class="room-name">Girafons</h3>
+      <p class="room-desc">Lumineuse et chaleureuse, la chambre Girafons joue avec les tons corail et blanc. Son lit à baldaquin dressé face aux grandes fenêtres et son pouf sculptural créent une atmosphère à la fois douce et élégante.</p>
       <div class="room-amenities">
         <span class="amenity">Grandes fenêtres</span><span class="amenity">Coin salon</span>
-        <span class="amenity">Tapis berbère</span><span class="amenity">Décor floral</span>
+        <span class="amenity">Tapis berbère</span><span class="amenity">Décor naturel</span>
       </div>
-      <p class="room-price-tag">À partir de</p>
-      <p class="room-price-val">125 000 FCFA <span style="font-size:1rem;color:var(--text-light)">/nuit</span></p>
     </div>
   </div>
 
+  <!-- 04 Nyala -->
   <div class="room-feature reverse reveal">
-    <div class="room-img"><img id="rc4" src="" alt="Salon Principal"/></div>
+    <div class="room-img"><img id="rc4" src="" alt="Chambre Nyala"/></div>
     <div class="room-body">
       <div class="room-num">04</div>
-      <p class="room-tag">Espace commun</p>
-      <h3 class="room-name">Grand Salon</h3>
-      <p class="room-desc">Au cœur du lodge, le Grand Salon accueille les hôtes dans un espace lumineux aux tons sable. Vastes canapés blancs, lustre en bois flotté, œuvres d'art africain… un lieu de vie pensé pour la convivialité.</p>
+      <p class="room-tag">Suite prestige</p>
+      <h3 class="room-name">Nyala</h3>
+      <p class="room-desc">Au cœur du lodge, la chambre Nyala accueille ses hôtes dans un espace lumineux aux tons sable. Vastes canapés blancs, lustre en bois flotté, œuvres d'art africain… un lieu de vie pensé pour la convivialité et le raffinement.</p>
       <div class="room-amenities">
         <span class="amenity">Lustre bois flotté</span><span class="amenity">Art africain</span>
         <span class="amenity">Mezzanine</span><span class="amenity">Accès piscine</span>
       </div>
-      <p class="room-price-tag">Inclus dans</p>
-      <p class="room-price-val">Tout séjour</p>
+    </div>
+  </div>
+
+  <!-- 05 Zèbre -->
+  <div class="room-feature reveal">
+    <div class="room-img"><img id="rc5" src="" alt="Chambre Zèbre"/></div>
+    <div class="room-body">
+      <div class="room-num">05</div>
+      <p class="room-tag">Chambre safari</p>
+      <h3 class="room-name">Zèbre</h3>
+      <p class="room-desc">Inspirée des grands espaces de la savane, la chambre Zèbre mêle motifs graphiques en noir et blanc et matières naturelles. Une vue privilégiée sur le domaine où les zèbres du troupeau évoluent en liberté.</p>
+      <div class="room-amenities">
+        <span class="amenity">Vue sur le domaine</span><span class="amenity">Décor safari</span>
+        <span class="amenity">Lit king-size</span><span class="amenity">Terrasse privée</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 Impala -->
+  <div class="room-feature reverse reveal">
+    <div class="room-img"><img id="rc6" src="" alt="Chambre Impala"/></div>
+    <div class="room-body">
+      <div class="room-num">06</div>
+      <p class="room-tag">Chambre élégance</p>
+      <h3 class="room-name">Impala</h3>
+      <p class="room-desc">Légère et gracieuse comme l'animal qui lui prête son nom, la chambre Impala déploie ses tons dorés et ses voilages aériens dans un volume chaleureux. Une adresse intime pour les amoureux de la nature africaine.</p>
+      <div class="room-amenities">
+        <span class="amenity">Tons dorés</span><span class="amenity">Voilages aériens</span>
+        <span class="amenity">Clim & ventilateur</span><span class="amenity">Salle de bain en pierre</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 Koba -->
+  <div class="room-feature reveal">
+    <div class="room-img"><img id="rc7" src="" alt="Chambre Koba"/></div>
+    <div class="room-body">
+      <div class="room-num">07</div>
+      <p class="room-tag">Suite panoramique</p>
+      <h3 class="room-name">Koba</h3>
+      <p class="room-desc">La chambre Koba, du nom du grand koudou des savanes, offre le panorama le plus saisissant du domaine. Grande baie vitrée, terrasse suspendue et décor brut en bois et pierre pour une immersion absolue dans la nature.</p>
+      <div class="room-amenities">
+        <span class="amenity">Grande baie vitrée</span><span class="amenity">Terrasse suspendue</span>
+        <span class="amenity">Décor brut naturel</span><span class="amenity">Vue panoramique</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCES avec vraies photos extérieures -->
+<!-- EXPERIENCES -->
 <section class="experiences" id="experiences">
   <div class="section-header reveal">
     <p class="pre">Art de vivre</p>
@@ -444,7 +466,7 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
   </div>
 </section>
 
-<!-- GALERIE — toutes les 12 photos vraies -->
+<!-- GALERIE -->
 <section class="gallery-section" id="gallery">
   <div style="text-align:center;padding:70px 0 40px;background:var(--green-dark)">
     <p class="pre reveal" style="color:var(--beige);opacity:.8">Galerie</p>
@@ -505,7 +527,7 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
   </div>
 </section>
 
-<!-- BOOKING — fond : piscine panoramique (img10) -->
+<!-- BOOKING -->
 <section class="booking" id="booking">
   <div class="booking-bg" id="bookingBg"></div>
   <p class="pre reveal" style="color:var(--beige)">Votre séjour</p>
@@ -517,12 +539,13 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
     <input type="date" placeholder="DÉPART"/>
     <select>
       <option value="">Choisir une chambre</option>
-      <option>Suite Dorée</option>
-      <option>Suite Baobab</option>
-      <option>Suite Rose</option>
-      <option>Chambre Tropicale</option>
-      <option>Suite Rotonde</option>
-      <option>Chambre Nature</option>
+      <option>Girafe</option>
+      <option>Cerf</option>
+      <option>Girafons</option>
+      <option>Nyala</option>
+      <option>Zèbre</option>
+      <option>Impala</option>
+      <option>Koba</option>
     </select>
     <button>Vérifier les disponibilités</button>
   </div>
@@ -533,7 +556,7 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="logo-svg">
-                  <svg viewBox="0 0 793.70135 1122.52" xmlns="http://www.w3.org/2000/svg" style="height:52px;width:auto" fill="#f5e6a3">
+        <svg viewBox="0 0 793.70135 1122.52" xmlns="http://www.w3.org/2000/svg" style="height:52px;width:auto" fill="#f5e6a3">
           <g transform="matrix(1.3333333,0,0,-1.3333333,0,1122.52)">
             <g transform="translate(211.5215,511.5719)"><path d="m 0,0 c 0.945,2.859 1.944,40.276 -0.062,53.284 -3.395,22.008 -13.606,38.222 -29.174,50.371 -9.151,7.141 -19.657,10.624 -30.262,13.465 -4.117,1.102 -8.434,1.493 -12.673,1.628 -6.101,0.195 -10.474,-3.528 -11.709,-10.424 -0.809,-4.521 -1.007,-9.373 -0.594,-13.97 1.218,-13.566 6.327,-25.842 10.956,-38.055 C -65.907,36.22 -51.715,22.901 -36.039,11.708 -25.52,4.198 -0.43,0.164 0,0"/></g>
             <g transform="translate(249.3384,477.861)"><path d="m 0,0 c 0.365,0.472 3.911,8.061 -1.008,12.98 -4.445,4.445 -9.232,7.592 -14.686,9.707 -3.369,1.306 -6.69,2.78 -10.044,4.139 -3.634,1.472 -5.916,2.397 -7.35,3.598 -0.695,-2.365 -0.352,-17.646 0.826,-22.907 2.151,-9.604 8.564,-15.785 16.299,-15.636 C -9.722,-7.999 -4.286,-5.536 0,0"/></g>
@@ -557,9 +580,27 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
         <a href="#">Facebook</a>
       </div>
     </div>
-    <div class="footer-col"><h4>Chambres</h4><ul><li><a href="#">Suite Dorée</a></li><li><a href="#">Suite Baobab</a></li><li><a href="#">Suite Rose</a></li><li><a href="#">Chambre Tropicale</a></li></ul></div>
-    <div class="footer-col"><h4>Expériences</h4><ul><li><a href="#">Safari sur le domaine</a></li><li><a href="#">Piscines & détente</a></li><li><a href="#">Feu de camp</a></li><li><a href="#">Événements privés</a></li></ul></div>
-    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:contact@lareserve.sn">contact@lareserve.sn</a></li><li><a href="tel:+221777000000">+221 77 700 00 00</a></li><li><a href="#">Sénégal</a></li><li><a href="#">Mentions légales</a></li></ul></div>
+    <div class="footer-col"><h4>Chambres</h4><ul>
+      <li><a href="#">Girafe</a></li>
+      <li><a href="#">Cerf</a></li>
+      <li><a href="#">Girafons</a></li>
+      <li><a href="#">Nyala</a></li>
+      <li><a href="#">Zèbre</a></li>
+      <li><a href="#">Impala</a></li>
+      <li><a href="#">Koba</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Expériences</h4><ul>
+      <li><a href="#">Safari sur le domaine</a></li>
+      <li><a href="#">Piscines & détente</a></li>
+      <li><a href="#">Feu de camp</a></li>
+      <li><a href="#">Événements privés</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul>
+      <li><a href="mailto:contact@lareserve.sn">contact@lareserve.sn</a></li>
+      <li><a href="tel:+221777000000">+221 77 700 00 00</a></li>
+      <li><a href="#">Sénégal</a></li>
+      <li><a href="#">Mentions légales</a></li>
+    </ul></div>
   </div>
   <div class="footer-bottom">
     <span>© 2025 La Réserve Sénégal · Tous droits réservés</span>
@@ -568,97 +609,68 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
 </footer>
 
 <script>
-// ═══════════════════════════════════════════════════════════
-// INJECTION DES VRAIES PHOTOS via l'API window.fs de Claude
-// ═══════════════════════════════════════════════════════════
+const IMGS = {
+  nyala:    'https://github.com/atouati-code/lareserve/blob/main/04f1fee7-82a4-4cef-8a58-2132bbf86630.png?raw=true',
+  koba:     'https://github.com/atouati-code/lareserve/blob/main/16f457c7-d377-4db3-8823-76380f3fc70c.png?raw=true',
+  piscine:  'https://github.com/atouati-code/lareserve/blob/main/353f02d9-ba26-4469-902f-02e1f78ebe94.png?raw=true',
+  girafe:   'https://github.com/atouati-code/lareserve/blob/main/446a72eb-f6fc-4c9c-9fad-b9a2e3c2ccda.png?raw=true',
+  salon:    'https://github.com/atouati-code/lareserve/blob/main/4687643d-5bd3-4a1f-b3cf-1f865547511f.png?raw=true',
+  zebres:   'https://github.com/atouati-code/lareserve/blob/main/4d907720-89c4-4e92-ab95-7b7a7310e228.png?raw=true',
+  soleil:   'https://github.com/atouati-code/lareserve/blob/main/5ad4d0e7-7339-4500-89cc-f3bfb1cd0cb2.png?raw=true',
+  feu:      'https://github.com/atouati-code/lareserve/blob/main/61cbd6b0-3602-44b7-b56d-8e5d656b536c.png?raw=true',
+};
+const fallback = IMGS.girafe;
 
-// Mapping : nom de fichier → IDs des éléments à remplir
-// Photos reçues dans l'ordre d'envoi :
-// [0] zèbres + lodge, [1] suite dorée intérieur, [2] coucher soleil,
-// [3] suite rose, [4] espace feu de camp, [5] piscine couverte (pool bar),
-// [6] suite baobab angle, [7] grand salon, [8] piscine bleue palmiers,
-// [9] piscine panoramique, [10] piscine longue palmiers, [11] antilopes
-
-async function loadAndInject() {
-  // On récupère toutes les images uploadées dans la conversation
-  // via window.fs.readFile si disponible
-  const assignments = [
-    // img0 → zèbres + lodge : hero s0, intro, galerie g0
-    { targets: ['#s0','#introImg','#g0'], type:'bg_and_img', positions:['bg','img','img'] },
-    // img1 → suite dorée intérieur : chambre rc1, galerie g1
-    { targets: ['#rc1','#g1'], type:'img' },
-    // img2 → coucher soleil : hero s2, exp3, galerie g2
-    { targets: ['#s2','#exp3','#g2'], type:'bg_and_img', positions:['bg','img','img'] },
-    // img3 → suite rose : chambre rc3, galerie g3
-    { targets: ['#rc3','#g3'], type:'img' },
-    // img4 → espace feu de camp : expériences exp2 partiel, galerie g4
-    { targets: ['#g4'], type:'img' },
-    // img5 → piscine couverte palmiers : exp1, galerie g5
-    { targets: ['#exp1','#g5'], type:'img' },
-    // img6 → suite baobab (autre angle) : rc2, galerie g6
-    { targets: ['#rc2','#g6'], type:'img' },
-    // img7 → grand salon : rc4
-    { targets: ['#rc4'], type:'img' },
-    // img8 → piscine bleue palmiers : hero s1, galerie
-    { targets: ['#s1'], type:'bg' },
-    // img9 → piscine panoramique : booking bg, exp1 override si mieux
-    { targets: ['#bookingBg'], type:'bg' },
-    // img10 → piscine longue palmiers : exp2
-    { targets: ['#exp2'], type:'img' },
-    // img11 → antilopes : galerie supplémentaire
-    { targets: [], type:'none' },
-  ];
-
-  // Tentative de récupération des images depuis le contexte Claude
-  try {
-    const files = await window.fs?.readdir?.('/uploads') || [];
-    const imgFiles = files.filter(f => /\.(jpg|jpeg|png|webp)/i.test(f)).sort();
-    
-    for(let i = 0; i < Math.min(imgFiles.length, assignments.length); i++) {
-      try {
-        const data = await window.fs.readFile('/uploads/' + imgFiles[i]);
-        const blob = new Blob([data], {type: 'image/jpeg'});
-        const url = URL.createObjectURL(blob);
-        applyUrl(url, assignments[i]);
-      } catch(e) { /* fichier non lisible */ }
-    }
-  } catch(e) {
-    // Fallback : tentative via parent DOM (images blob du chat)
-    tryParentImages(assignments);
-  }
+function setImg(sel, url) {
+  const el = document.querySelector(sel);
+  if (!el) return;
+  el.src = url || fallback;
+}
+function setBg(sel, url) {
+  const el = document.querySelector(sel);
+  if (!el) return;
+  const u = url || fallback;
+  el.style.backgroundImage = `linear-gradient(rgba(20,45,30,.45),rgba(15,35,22,.58)),url('${u}')`;
+  el.style.backgroundSize = 'cover';
+  el.style.backgroundPosition = 'center';
 }
 
-function applyUrl(url, assignment) {
-  if (!assignment || assignment.type === 'none') return;
-  assignment.targets.forEach((sel, idx) => {
-    const el = document.querySelector(sel);
-    if (!el) return;
-    const pos = assignment.positions ? assignment.positions[idx] : assignment.type;
-    if (pos === 'bg') {
-      el.style.backgroundImage = `linear-gradient(rgba(20,45,30,.45),rgba(15,35,22,.58)),url('${url}')`;
-      el.style.backgroundSize = 'cover';
-      el.style.backgroundPosition = 'center';
-    } else {
-      el.src = url;
-    }
-  });
+function loadAndInject() {
+  // Hero slides
+  setBg('#s0', IMGS.zebres);
+  setBg('#s1', IMGS.piscine);
+  setBg('#s2', IMGS.soleil);
+
+  // Intro
+  setImg('#introImg', IMGS.zebres);
+
+  // Chambres (fallback girafe pour celles sans photo encore)
+  setImg('#rc1', IMGS.girafe);   // Girafe
+  setImg('#rc2', fallback);      // Cerf
+  setImg('#rc3', fallback);      // Girafons
+  setImg('#rc4', IMGS.nyala);    // Nyala
+  setImg('#rc5', fallback);      // Zèbre
+  setImg('#rc6', fallback);      // Impala
+  setImg('#rc7', IMGS.koba);     // Koba
+
+  // Expériences
+  setImg('#exp1', IMGS.piscine);
+  setImg('#exp2', IMGS.zebres);
+  setImg('#exp3', IMGS.soleil);
+
+  // Galerie
+  setImg('#g0', IMGS.zebres);
+  setImg('#g1', IMGS.girafe);
+  setImg('#g2', IMGS.piscine);
+  setImg('#g3', IMGS.soleil);
+  setImg('#g4', IMGS.feu);
+  setImg('#g5', IMGS.nyala);
+  setImg('#g6', IMGS.koba);
+
+  // Booking background
+  setBg('#bookingBg', IMGS.salon);
 }
 
-function tryParentImages(assignments) {
-  try {
-    const pImgs = Array.from(
-      window.parent?.document?.querySelectorAll?.('img[src^="blob:"], img[src^="data:image"]') || []
-    );
-    if (pImgs.length === 0) return;
-    pImgs.forEach((pImg, i) => {
-      if (i < assignments.length) applyUrl(pImg.src, assignments[i]);
-    });
-  } catch(e) {}
-}
-
-// ═══════════════════════════════════════════════════════════
-// SLIDESHOW
-// ═══════════════════════════════════════════════════════════
 let cur = 0;
 const slides = document.querySelectorAll('.slide'), dots = document.querySelectorAll('.dot');
 function goSlide(n) {
@@ -667,25 +679,18 @@ function goSlide(n) {
 }
 setInterval(() => goSlide((cur + 1) % slides.length), 5500);
 
-// ═══════════════════════════════════════════════════════════
-// SCROLL REVEAL + NAV
-// ═══════════════════════════════════════════════════════════
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
+}, { threshold:.08, rootMargin:'0px 0px -30px 0px' });
 
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
 });
 
-// ═══════════════════════════════════════════════════════════
-// LIGHTBOX
-// ═══════════════════════════════════════════════════════════
 let lbIdx = 0, lbSrcs = [];
 function buildSrcs() {
   lbSrcs = ['g0','g1','g2','g3','g4','g5','g6'].map(id => {
-    const el = document.getElementById(id);
-    return el?.src || '';
+    const el = document.getElementById(id); return el?.src || '';
   }).filter(Boolean);
 }
 function openLB(i) {
@@ -704,27 +709,19 @@ function lbNav(d) {
   document.getElementById('lb-img').src = lbSrcs[lbIdx];
   document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + lbSrcs.length;
 }
-document.getElementById('lb').addEventListener('click', e => {
-  if (e.target === document.getElementById('lb')) closeLB();
-});
+document.getElementById('lb').addEventListener('click', e => { if (e.target === document.getElementById('lb')) closeLB(); });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLB();
-  if (e.key === 'ArrowRight') lbNav(1);
-  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key==='Escape') closeLB();
+  if (e.key==='ArrowRight') lbNav(1);
+  if (e.key==='ArrowLeft') lbNav(-1);
 });
 
-// ═══════════════════════════════════════════════════════════
-// MOBILE MENU
-// ═══════════════════════════════════════════════════════════
 function toggleMenu() {
   const n = document.querySelector('.nav-links');
   n.style.cssText = n.style.display === 'flex' ? ''
     : 'display:flex;flex-direction:column;position:fixed;top:65px;left:0;right:0;background:rgba(30,69,48,.97);padding:32px;gap:24px;backdrop-filter:blur(12px);z-index:99';
 }
 
-// ═══════════════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════════════
 window.addEventListener('load', () => {
   loadAndInject();
   setTimeout(() => {
