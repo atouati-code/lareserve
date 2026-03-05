@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>La Réserve Sénégal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green:#2a5c3f;--green-dark:#1e4530;--green-light:#3a7a55;
+  --beige:#f5e6a3;--beige-dark:#ecdfa0;--beige-soft:#fdf6dc;
+  --cream:#faf6e9;--text:#2a3020;--text-light:#5a6650;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;color:var(--text);background:var(--green-dark);overflow-x:hidden}
+
+/* ── LOGO ── */
+.logo-svg{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-svg svg{height:52px;width:auto;flex-shrink:0}
+.logo-text-wrap{display:flex;flex-direction:column;line-height:1}
+.logo-name{font-family:'Dancing Script',cursive;font-size:1.4rem;color:#fff;font-weight:600}
+.logo-sub{font-size:.42rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:2px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:22px 56px;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:rgba(30,69,48,.95);backdrop-filter:blur(10px);padding:14px 56px;box-shadow:0 2px 30px rgba(0,0,0,.2)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--beige)}
+.nav-book{border:1px solid var(--beige);color:var(--beige)!important;padding:8px 22px}
+.nav-book:hover{background:var(--beige)!important;color:var(--green-dark)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:24px;height:1px;background:#fff}
+
+/* ── HERO ── */
+.hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease;background-size:cover;background-position:center}
+.slide.active{opacity:1}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:0 24px}
+.hero-badge{display:inline-block;border:1px solid rgba(245,230,163,.5);padding:8px 24px;font-size:.6rem;letter-spacing:5px;text-transform:uppercase;color:var(--beige);margin-bottom:28px}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:300;line-height:1.05;margin-bottom:20px}
+.hero-title em{font-style:italic;color:var(--beige)}
+.hero-sub{font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:48px}
+.hero-cta{display:inline-flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.btn-primary{background:var(--beige);color:var(--green-dark);padding:15px 42px;font-size:.62rem;letter-spacing:4px;text-transform:uppercase;text-decoration:none;transition:.3s;font-weight:500;display:inline-block}
+.btn-primary:hover{background:var(--beige-dark);transform:translateY(-1px)}
+.btn-outline{border:1px solid rgba(255,255,255,.55);color:#fff;padding:15px 42px;font-size:.62rem;letter-spacing:4px;text-transform:uppercase;text-decoration:none;transition:.3s}
+.btn-outline:hover{border-color:var(--beige);color:var(--beige)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,.5);font-size:.55rem;letter-spacing:3px;text-transform:uppercase;cursor:pointer}
+.scroll-line{width:1px;height:50px;background:linear-gradient(var(--beige),transparent);animation:sa 2s infinite}
+@keyframes sa{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.slide-dots{position:absolute;bottom:40px;right:56px;z-index:2;display:flex;gap:10px}
+.dot{width:22px;height:1px;background:rgba(255,255,255,.35);cursor:pointer;transition:.3s}
+.dot.active{width:44px;background:var(--beige)}
+
+/* ── INTRO ── */
+.intro-wrap{background:var(--cream)}
+.intro{padding:100px 80px;display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;max-width:1400px;margin:0 auto}
+.pre{font-size:.6rem;letter-spacing:6px;text-transform:uppercase;color:var(--green);margin-bottom:18px;font-weight:500}
+.intro-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.25;margin-bottom:28px;color:var(--green-dark)}
+.intro-text p{font-size:.82rem;line-height:1.95;color:var(--text-light);margin-bottom:18px}
+.intro-link{display:inline-block;margin-top:20px;font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--green);text-decoration:none;border-bottom:1px solid var(--green);padding-bottom:4px}
+.intro-img{position:relative}
+.intro-img img{width:100%;height:520px;object-fit:cover;object-position:center}
+.intro-img::before{content:'';position:absolute;top:-18px;left:-18px;width:55%;height:55%;border:1px solid var(--beige-dark);z-index:0;pointer-events:none}
+.divider{width:40px;height:1px;background:var(--green);margin:20px 0 28px}
+.divider-center{margin:20px auto 28px}
+
+/* ── STATS ── */
+.stats{background:var(--green-dark);padding:64px 56px;display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+.stat{padding:36px 20px;border-right:1px solid rgba(245,230,163,.12)}
+.stat:last-child{border:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3.2rem;color:var(--beige);font-weight:300}
+.stat-label{font-size:.58rem;letter-spacing:4px;text-transform:uppercase;color:rgba(245,230,163,.5);margin-top:10px}
+
+/* ── ROOM FEATURES ── */
+.rooms-showcase{background:var(--cream)}
+.section-header{text-align:center;padding:100px 48px 56px}
+.section-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--green-dark)}
+.room-feature{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.room-feature.reverse .room-img{order:2}
+.room-feature.reverse .room-body{order:1}
+.room-img{overflow:hidden}
+.room-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease;display:block;min-height:460px}
+.room-feature:hover .room-img img{transform:scale(1.04)}
+.room-body{padding:70px 64px;display:flex;flex-direction:column;justify-content:center;background:var(--cream)}
+.room-feature:nth-child(even) .room-body{background:#f0ece0}
+.room-num{font-family:'Cormorant Garamond',serif;font-size:5rem;color:rgba(42,92,63,.07);font-weight:300;line-height:1;margin-bottom:-20px}
+.room-tag{font-size:.55rem;letter-spacing:4px;text-transform:uppercase;color:var(--green);margin-bottom:14px;opacity:.8}
+.room-name{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--green-dark);font-weight:300;margin-bottom:18px;line-height:1.2}
+.room-desc{font-size:.8rem;line-height:1.9;color:var(--text-light);margin-bottom:28px}
+.room-amenities{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.amenity{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--green);border:1px solid rgba(42,92,63,.25);padding:6px 14px}
+.room-price-tag{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);margin-bottom:6px}
+.room-price-val{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--green-dark);font-weight:300}
+
+/* ── EXPERIENCES avec vraies photos extérieures ── */
+.experiences{background:var(--green-dark)}
+.experiences .section-header{padding-bottom:56px}
+.experiences .section-header h2{color:#fff}
+.experiences .section-header .pre{color:var(--beige);opacity:.8}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.exp-card{position:relative;overflow:hidden;height:500px;cursor:pointer}
+.exp-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s;display:block}
+.exp-card:hover img{transform:scale(1.06)}
+.exp-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,45,30,.9) 0%,rgba(20,45,30,.05) 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:40px 36px;color:#fff}
+.exp-tag{font-size:.52rem;letter-spacing:4px;text-transform:uppercase;color:var(--beige);margin-bottom:10px}
+.exp-title{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;margin-bottom:12px}
+.exp-desc{font-size:.73rem;line-height:1.75;color:rgba(255,255,255,.78);max-height:0;overflow:hidden;transition:max-height .5s}
+.exp-card:hover .exp-desc{max-height:120px}
+
+/* ── GALERIE ── */
+.gallery-section{background:var(--green-dark);padding:6px}
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:260px;gap:6px}
+.gal-item{overflow:hidden;cursor:pointer;position:relative}
+.gal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s}
+.gal-item:hover img{transform:scale(1.05)}
+.gal-item:nth-child(1){grid-column:span 5;grid-row:span 2}
+.gal-item:nth-child(2){grid-column:span 4}
+.gal-item:nth-child(3){grid-column:span 3}
+.gal-item:nth-child(4){grid-column:span 3}
+.gal-item:nth-child(5){grid-column:span 4}
+.gal-item:nth-child(6){grid-column:span 7}
+.gal-item:nth-child(7){grid-column:span 5}
+.gal-overlay{position:absolute;inset:0;background:rgba(30,69,48,0);transition:.4s;display:flex;align-items:center;justify-content:center}
+.gal-item:hover .gal-overlay{background:rgba(30,69,48,.3)}
+.gal-plus{color:#fff;font-size:1.8rem;opacity:0;transition:.4s;transform:scale(.6)}
+.gal-item:hover .gal-plus{opacity:1;transform:scale(1)}
+
+/* ── TÉMOIGNAGES ── */
+.testimonials{background:var(--cream);padding:100px 56px;text-align:center}
+.testimonials h2{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--green-dark);font-weight:300;margin-bottom:60px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;max-width:1200px;margin:0 auto}
+.testi-card{padding:40px 36px;background:#fff;border-top:2px solid var(--green);text-align:left;box-shadow:0 4px 30px rgba(42,92,63,.07)}
+.stars{color:var(--green);font-size:11px;letter-spacing:4px;margin-bottom:20px}
+.testi-text{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--text);font-style:italic;line-height:1.85;margin-bottom:24px}
+.testi-author{font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-light)}
+
+/* ── LOCALISATION ── */
+.location{background:var(--beige-soft);display:grid;grid-template-columns:1fr 1fr}
+.location-map{min-height:520px;overflow:hidden}
+.location-map iframe{width:100%;height:100%;border:none;filter:sepia(.25) saturate(.9)}
+.location-info{padding:80px 72px;display:flex;flex-direction:column;justify-content:center}
+.location-info h2{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:var(--green-dark);margin-bottom:24px;line-height:1.2}
+.location-info p{font-size:.8rem;line-height:1.95;color:var(--text-light);margin-bottom:32px}
+.loc-items{display:flex;flex-direction:column;gap:18px;margin-bottom:36px}
+.loc-item{display:flex;align-items:flex-start;gap:16px}
+.loc-icon{width:38px;height:38px;border:1px solid var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green);font-size:15px}
+.loc-text{font-size:.73rem;color:var(--text-light);line-height:1.65}
+.loc-text strong{display:block;color:var(--green-dark);margin-bottom:3px;font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase}
+
+/* ── BOOKING ── */
+.booking{position:relative;padding:130px 56px;text-align:center;color:#fff;overflow:hidden}
+.booking-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.booking-bg::after{content:'';position:absolute;inset:0;background:rgba(20,45,30,.78)}
+.booking > *:not(.booking-bg){position:relative;z-index:1}
+.booking h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,4rem);font-weight:300;margin-bottom:16px}
+.booking p.sub{font-size:.8rem;color:rgba(255,255,255,.7);margin-bottom:52px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.85}
+.booking-form{display:flex;max-width:860px;margin:0 auto;background:rgba(245,230,163,.08);backdrop-filter:blur(12px);border:1px solid rgba(245,230,163,.25)}
+.booking-form input,.booking-form select{flex:1;background:transparent;border:none;border-right:1px solid rgba(245,230,163,.2);padding:20px 22px;color:#fff;font-family:'Montserrat',sans-serif;font-size:.65rem;letter-spacing:2px;outline:none}
+.booking-form input::placeholder{color:rgba(255,255,255,.45)}
+.booking-form select option{background:#1e4530}
+.booking-form button{background:var(--beige);color:var(--green-dark);border:none;padding:20px 28px;font-family:'Montserrat',sans-serif;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:.3s;font-weight:500;white-space:nowrap}
+.booking-form button:hover{background:var(--beige-dark)}
+
+/* ── FOOTER ── */
+footer{background:var(--green-dark);padding:80px 56px 36px}
+.footer-top{border-bottom:1px solid rgba(245,230,163,.1);padding-bottom:60px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:36px}
+.footer-brand p{font-size:.75rem;line-height:1.85;max-width:270px;margin-top:20px;color:rgba(255,255,255,.45)}
+.footer-col h4{font-size:.58rem;letter-spacing:4px;text-transform:uppercase;color:var(--beige);opacity:.8;margin-bottom:22px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+.footer-col ul a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.73rem;transition:.3s}
+.footer-col ul a:hover{color:var(--beige)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.62rem;letter-spacing:2px;color:rgba(255,255,255,.3)}
+.social-links{display:flex;gap:22px;margin-top:24px}
+.social-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;transition:.3s}
+.social-links a:hover{color:var(--beige)}
+
+/* ── LIGHTBOX ── */
+.lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(8,20,12,.96);align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:88vh;object-fit:contain}
+.lb-close{position:absolute;top:24px;right:32px;color:#fff;font-size:2rem;cursor:pointer;opacity:.7;background:none;border:none;transition:.3s}
+.lb-close:hover{opacity:1}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;opacity:.6;transition:.3s;padding:20px;background:none;border:none}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lb-prev:hover,.lb-next:hover{opacity:1;color:var(--beige)}
+.lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:.6rem;letter-spacing:3px}
+
+/* ── LOADING ── */
+#loading{position:fixed;inset:0;background:var(--green-dark);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .8s}
+#loading.done{opacity:0;pointer-events:none}
+.load-logo{font-family:'Dancing Script',cursive;font-size:2.5rem;color:var(--beige)}
+.load-bar{width:200px;height:1px;background:rgba(245,230,163,.2);position:relative;overflow:hidden}
+.load-bar::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--beige);animation:lb 2s ease forwards}
+@keyframes lb{to{left:0}}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .intro{grid-template-columns:1fr;gap:40px;padding:70px 36px}
+  .room-feature,.room-feature.reverse{grid-template-columns:1fr}
+  .room-feature.reverse .room-img,.room-feature.reverse .room-body{order:unset}
+  .room-img img{min-height:320px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{border-right:none;border-bottom:1px solid rgba(245,230,163,.1)}
+  .exp-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:40px}
+  .location{grid-template-columns:1fr}
+  .location-map{min-height:300px}
+  .booking-form{flex-direction:column}
+  .booking-form input,.booking-form select{border-right:none;border-bottom:1px solid rgba(245,230,163,.15)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:220px}
+  .gal-item:nth-child(n){grid-column:span 1;grid-row:span 1}
+  .gal-item:nth-child(1){grid-column:span 2;grid-row:span 1}
+}
+@media(max-width:768px){
+  nav{padding:18px 24px}
+  nav.scrolled{padding:12px 24px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .booking{padding:80px 24px}
+  .footer-top{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;gap:14px;text-align:center}
+  .room-body{padding:48px 28px}
+  .slide-dots{right:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="load-logo">La Réserve</div>
+  <div class="load-bar"></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lb">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <button class="lb-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lb-img" src="" alt=""/>
+  <button class="lb-next" onclick="lbNav(1)">›</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo-svg">
+    <svg viewBox="0 0 793.70135 1122.52" xmlns="http://www.w3.org/2000/svg" style="height:60px;width:auto">
+      <g transform="matrix(1.3333333,0,0,-1.3333333,0,1122.52)" fill="#f5e6a3">
+        <g transform="translate(211.5215,511.5719)"><path d="m 0,0 c 0.945,2.859 1.944,40.276 -0.062,53.284 -3.395,22.008 -13.606,38.222 -29.174,50.371 -9.151,7.141 -19.657,10.624 -30.262,13.465 -4.117,1.102 -8.434,1.493 -12.673,1.628 -6.101,0.195 -10.474,-3.528 -11.709,-10.424 -0.809,-4.521 -1.007,-9.373 -0.594,-13.97 1.218,-13.566 6.327,-25.842 10.956,-38.055 C -65.907,36.22 -51.715,22.901 -36.039,11.708 -25.52,4.198 -0.43,0.164 0,0"/></g>
+        <g transform="translate(249.3384,477.861)"><path d="m 0,0 c 0.365,0.472 3.911,8.061 -1.008,12.98 -4.445,4.445 -9.232,7.592 -14.686,9.707 -3.369,1.306 -6.69,2.78 -10.044,4.139 -3.634,1.472 -5.916,2.397 -7.35,3.598 -0.695,-2.365 -0.352,-17.646 0.826,-22.907 2.151,-9.604 8.564,-15.785 16.299,-15.636 C -9.722,-7.999 -4.286,-5.536 0,0"/></g>
+        <g transform="translate(278.1001,671.0529)"><path d="m 0,0 c -1.398,9.375 -2.524,18.937 -5.109,27.905 -2.083,7.228 -5.401,14.422 -9.556,20.321 -6.29,8.93 -17.4,7.281 -22.195,-2.823 -2.199,-4.633 -3.565,-9.987 -4.493,-15.215 -1.689,-9.523 -0.166,-19.127 1.581,-28.408 4.006,-21.294 8.705,-42.416 12.982,-63.645 3.124,-15.501 6.677,-30.948 8.811,-46.635 1.652,-12.144 2.293,-24.683 1.735,-36.934 -0.5,-10.952 -8.355,-60.306 -3.354,-52.832 0.223,0.106 6.764,10.393 8.279,13.383 8.373,16.525 11.565,35.091 12.79,53.974 1.119,17.245 1.697,34.587 1.632,51.889 C 3.004,-52.654 3.907,-26.193 0,0"/></g>
+        <g transform="translate(254.1338,465.0963)"><path d="m 0,0 c -0.74,-0.534 -9.02,-14.854 -10.998,-18.628 -7.082,-13.517 -8.254,-29.34 -5.649,-46.429 3.802,-24.947 12.132,-46.753 23.034,-66.515 0.689,-1.248 2.124,-2.157 3.139,-2.116 0.558,0.022 1.298,2.269 1.391,3.666 1.326,20.011 2.607,34.746 2.565,54.951 C 13.39,-30.969 1.135,-1.13 0,0"/></g>
+        <g transform="translate(302.6504,632.8116)"><path d="m 0,0 c 1.763,-24.067 3.118,-48.137 4.508,-72.206 l 1.886,-36.104 1.571,-36.106 c 0.479,-12.035 1.42,-24.069 2.148,-36.103 0.729,-12.035 0.835,-24.071 0.259,-36.112 -0.563,-12.039 -1.517,-24.081 -2.926,-36.124 -1.464,-12.044 -3.235,-24.089 -6.217,-36.14 -0.143,-0.58 -0.73,-0.934 -1.31,-0.791 -0.4,0.1 -0.692,0.411 -0.789,0.783 -3.083,12.024 -4.958,24.053 -6.525,36.085 -1.51,12.031 -2.566,24.063 -3.232,36.098 -0.679,12.035 -0.675,24.072 -0.049,36.113 0.626,12.04 1.465,24.081 1.841,36.12 l 1.264,36.117 1.579,36.12 c 1.184,24.08 2.335,48.159 3.892,72.241 0.038,0.58 0.538,1.02 1.119,0.982 C -0.45,0.939 -0.037,0.516 0,0"/></g>
+        <g transform="translate(291.1812,334.1847)"><path d="m 0,0 c 5.327,-10.621 5.708,-21.204 0.854,-23.64 -4.856,-2.434 -13.109,4.202 -18.436,14.822 -5.327,10.621 -5.709,21.205 -0.854,23.639 C -13.58,17.257 -5.326,10.62 0,0"/></g>
+        <g transform="translate(265.3228,320.337)"><path d="m 0,0 c 6.092,-7.627 11.861,-15.033 18.201,-21.366 3.163,-3.135 6.458,-5.985 9.873,-8.071 3.405,-2.108 6.865,-3.346 10.123,-3.385 3.252,-0.068 6.605,0.973 9.947,3.051 1.682,0.997 3.31,2.25 4.927,3.624 1.61,1.37 3.183,2.89 4.724,4.49 6.199,6.44 11.706,14.102 17.942,21.657 -0.78,-4.856 -2.132,-9.547 -3.848,-14.15 -1.738,-4.593 -3.918,-9.064 -6.673,-13.335 -0.682,-1.069 -1.449,-2.103 -2.191,-3.154 -0.815,-1.011 -1.594,-2.042 -2.496,-3.014 -1.716,-1.998 -3.723,-3.828 -5.955,-5.509 -2.238,-1.67 -4.784,-3.102 -7.602,-4.151 -2.82,-1.028 -5.935,-1.575 -9.038,-1.504 -3.101,0.07 -6.155,0.724 -8.886,1.828 -2.73,1.117 -5.214,2.539 -7.41,4.197 -2.196,1.659 -4.175,3.462 -5.927,5.408 -1.776,1.92 -3.342,3.961 -4.776,6.05 -2.845,4.195 -5.138,8.617 -6.977,13.183 C 2.151,-9.576 0.689,-4.883 0,0"/></g>
+        <g transform="translate(393.2471,511.9928)"><path d="m 0,0 c -0.944,2.859 -1.944,40.276 0.062,53.284 3.395,22.008 13.606,38.222 29.174,50.371 9.151,7.14 19.657,10.624 30.261,13.464 4.118,1.103 8.435,1.493 12.675,1.629 6.1,0.195 10.474,-3.528 11.708,-10.424 0.809,-4.521 1.007,-9.373 0.594,-13.97 C 83.256,80.787 78.147,68.512 73.518,56.299 65.907,36.22 51.716,22.901 36.039,11.708 25.52,4.198 0.43,0.163 0,0"/></g>
+        <g transform="translate(355.4307,478.2819)"><path d="m 0,0 c -0.365,0.472 -3.912,8.061 1.008,12.98 4.445,4.445 9.232,7.592 14.685,9.707 3.369,1.306 6.691,2.78 10.045,4.139 3.633,1.471 5.915,2.397 7.35,3.598 C 33.783,28.059 33.44,12.778 32.262,7.517 30.111,-2.087 23.697,-8.268 15.963,-8.119 9.722,-7.999 4.285,-5.536 0,0"/></g>
+        <g transform="translate(326.6689,671.4738)"><path d="m 0,0 c 1.398,9.375 2.524,18.937 5.108,27.905 2.084,7.228 5.402,14.422 9.556,20.32 6.291,8.931 17.4,7.282 22.195,-2.822 2.2,-4.633 3.566,-9.987 4.494,-15.215 1.689,-9.523 0.166,-19.127 -1.581,-28.408 -4.006,-21.294 -8.706,-42.416 -12.983,-63.645 -3.123,-15.502 -6.677,-30.948 -8.81,-46.635 -1.653,-12.144 -2.293,-24.684 -1.735,-36.934 0.499,-10.952 8.355,-60.306 3.354,-52.832 -0.224,0.106 -6.764,10.393 -8.279,13.383 -8.374,16.525 -11.565,35.091 -12.791,53.973 -1.119,17.246 -1.697,34.588 -1.632,51.89 C -3.004,-52.654 -3.907,-26.193 0,0"/></g>
+        <g transform="translate(350.6348,465.5172)"><path d="m 0,0 c 0.74,-0.534 9.021,-14.854 10.998,-18.628 7.082,-13.517 8.255,-29.34 5.649,-46.429 -3.802,-24.947 -12.132,-46.754 -23.035,-66.515 -0.687,-1.248 -2.123,-2.157 -3.138,-2.116 -0.558,0.022 -1.298,2.269 -1.391,3.666 -1.325,20.011 -2.607,34.746 -2.564,54.951 C -13.39,-30.969 -1.136,-1.13 0,0"/></g>
+        <g transform="translate(313.5879,334.6056)"><path d="m 0,0 c -5.327,-10.621 -5.709,-21.205 -0.854,-23.64 4.855,-2.434 13.109,4.202 18.436,14.822 5.326,10.621 5.708,21.205 0.853,23.639 C 13.58,17.256 5.326,10.62 0,0"/></g>
+      </g>
+    </svg>
+    <div class="logo-text-wrap">
+      <span class="logo-name">La Réserve</span>
+      <span class="logo-sub">Guest House & Memories</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#rooms">Hébergements</a></li>
+    <li><a href="#experiences">Expériences</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#location">Accès</a></li>
+    <li><a href="#booking" class="nav-book">Réserver</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO — 3 slides : zèbres (img1), piscine palmiers (img9), coucher soleil (img3) -->
+<section class="hero">
+  <div class="hero-slides">
+    <div class="slide active" id="s0"></div>
+    <div class="slide" id="s1"></div>
+    <div class="slide" id="s2"></div>
+  </div>
+  <div class="hero-content reveal">
+    <div class="hero-badge">Sénégal — Afrique de l'Ouest</div>
+    <h1 class="hero-title">Où la savane<br/><em>devient demeure</em></h1>
+    <p class="hero-sub">Guest House &nbsp;·&nbsp; Réserve naturelle &nbsp;·&nbsp; Authenticité africaine</p>
+    <div class="hero-cta">
+      <a href="#booking" class="btn-primary">Réserver un séjour</a>
+      <a href="#rooms" class="btn-outline">Découvrir les chambres</a>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.querySelector('.intro-wrap').scrollIntoView({behavior:'smooth'})">
+    <div class="scroll-line"></div>
+    <span>Découvrir</span>
+  </div>
+  <div class="slide-dots">
+    <div class="dot active" onclick="goSlide(0)"></div>
+    <div class="dot" onclick="goSlide(1)"></div>
+    <div class="dot" onclick="goSlide(2)"></div>
+  </div>
+</section>
+
+<!-- INTRO — photo lodge + zèbres (img1) -->
+<section class="intro-wrap">
+  <div class="intro">
+    <div class="intro-text reveal">
+      <p class="pre">Notre univers</p>
+      <div class="divider"></div>
+      <h2>Une réserve où la faune partage votre quotidien</h2>
+      <p>À La Réserve, les zèbres et les antilopes broutent librement à quelques mètres de vos chambres. Un domaine d'exception où la nature africaine s'invite dans chaque moment de votre séjour.</p>
+      <p>Piscines à débordement, lounges sous les palmiers, espaces feu de camp… chaque lieu a été pensé pour une immersion totale et un confort absolu.</p>
+      <a href="#rooms" class="intro-link">Voir nos hébergements →</a>
+    </div>
+    <div class="intro-img reveal">
+      <img id="introImg" src="" alt="La Réserve — lodge et zèbres"/>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat reveal"><div class="stat-num">6</div><div class="stat-label">Chambres uniques</div></div>
+  <div class="stat reveal"><div class="stat-num">2</div><div class="stat-label">Piscines</div></div>
+  <div class="stat reveal"><div class="stat-num">+20</div><div class="stat-label">Espèces animales</div></div>
+  <div class="stat reveal"><div class="stat-num">5★</div><div class="stat-label">Expérience client</div></div>
+</section>
+
+<!-- ROOMS — 4 chambres avec vraies photos -->
+<section class="rooms-showcase" id="rooms">
+  <div class="section-header reveal">
+    <p class="pre">Hébergements</p>
+    <div class="divider divider-center"></div>
+    <h2>Nos chambres & suites</h2>
+  </div>
+
+  <div class="room-feature reveal">
+    <div class="room-img"><img id="rc1" src="" alt="Suite Dorée"/></div>
+    <div class="room-body">
+      <div class="room-num">01</div>
+      <p class="room-tag">Suite signature</p>
+      <h3 class="room-name">Suite Dorée</h3>
+      <p class="room-desc">Sous une charpente en étoile de branches naturelles, la Suite Dorée s'ouvre sur une lumière d'or filtrée par de grands rideaux en lin. Spacieuse, épurée, avec un lit à baldaquin dressé au cœur d'un volume généreux.</p>
+      <div class="room-amenities">
+        <span class="amenity">Charpente étoile</span><span class="amenity">Lit baldaquin</span>
+        <span class="amenity">Rideaux lin</span><span class="amenity">Clim & ventilateur</span>
+      </div>
+      <p class="room-price-tag">À partir de</p>
+      <p class="room-price-val">175 000 FCFA <span style="font-size:1rem;color:var(--text-light)">/nuit</span></p>
+    </div>
+  </div>
+
+  <div class="room-feature reverse reveal">
+    <div class="room-img"><img id="rc2" src="" alt="Suite Baobab"/></div>
+    <div class="room-body">
+      <div class="room-num">02</div>
+      <p class="room-tag">Suite duplex</p>
+      <h3 class="room-name">Suite Baobab</h3>
+      <p class="room-desc">Vaste suite avec salon indépendant, plafond en branches de baobab et lit à baldaquin drapé de voilages blancs. Une décoration raffinée mêle art africain contemporain et mobilier blanc immaculé.</p>
+      <div class="room-amenities">
+        <span class="amenity">Salon privé</span><span class="amenity">Plafond branches</span>
+        <span class="amenity">TV & Clim</span><span class="amenity">Sol terrazzo</span>
+      </div>
+      <p class="room-price-tag">À partir de</p>
+      <p class="room-price-val">150 000 FCFA <span style="font-size:1rem;color:var(--text-light)">/nuit</span></p>
+    </div>
+  </div>
+
+  <div class="room-feature reveal">
+    <div class="room-img"><img id="rc3" src="" alt="Suite Rose"/></div>
+    <div class="room-body">
+      <div class="room-num">03</div>
+      <p class="room-tag">Chambre romantique</p>
+      <h3 class="room-name">Suite Rose</h3>
+      <p class="room-desc">Lumineuse et chaleureuse, la Suite Rose joue avec les tons corail et blanc. Son lit à baldaquin dressé face aux grandes fenêtres et son pouf rose sculptural créent une atmosphère à la fois douce et élégante.</p>
+      <div class="room-amenities">
+        <span class="amenity">Grandes fenêtres</span><span class="amenity">Coin salon</span>
+        <span class="amenity">Tapis berbère</span><span class="amenity">Décor floral</span>
+      </div>
+      <p class="room-price-tag">À partir de</p>
+      <p class="room-price-val">125 000 FCFA <span style="font-size:1rem;color:var(--text-light)">/nuit</span></p>
+    </div>
+  </div>
+
+  <div class="room-feature reverse reveal">
+    <div class="room-img"><img id="rc4" src="" alt="Salon Principal"/></div>
+    <div class="room-body">
+      <div class="room-num">04</div>
+      <p class="room-tag">Espace commun</p>
+      <h3 class="room-name">Grand Salon</h3>
+      <p class="room-desc">Au cœur du lodge, le Grand Salon accueille les hôtes dans un espace lumineux aux tons sable. Vastes canapés blancs, lustre en bois flotté, œuvres d'art africain… un lieu de vie pensé pour la convivialité.</p>
+      <div class="room-amenities">
+        <span class="amenity">Lustre bois flotté</span><span class="amenity">Art africain</span>
+        <span class="amenity">Mezzanine</span><span class="amenity">Accès piscine</span>
+      </div>
+      <p class="room-price-tag">Inclus dans</p>
+      <p class="room-price-val">Tout séjour</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES avec vraies photos extérieures -->
+<section class="experiences" id="experiences">
+  <div class="section-header reveal">
+    <p class="pre">Art de vivre</p>
+    <div class="divider divider-center" style="background:var(--beige);opacity:.5"></div>
+    <h2>Expériences & découvertes</h2>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card reveal">
+      <img id="exp1" src="" alt="Piscine"/>
+      <div class="exp-overlay">
+        <p class="exp-tag">Détente & Loisirs</p>
+        <h3 class="exp-title">Piscines & Palmiers</h3>
+        <p class="exp-desc">Deux piscines panoramiques entourées de palmiers et de chaises longues. Flottez dans l'eau turquoise en contemplant la savane à l'horizon.</p>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <img id="exp2" src="" alt="Faune sauvage"/>
+      <div class="exp-overlay">
+        <p class="exp-tag">Nature & Faune</p>
+        <h3 class="exp-title">Animaux en liberté</h3>
+        <p class="exp-desc">Zèbres, antilopes élands et de nombreuses espèces évoluent librement sur le domaine. Une expérience safari unique à quelques pas de votre chambre.</p>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <img id="exp3" src="" alt="Coucher de soleil"/>
+      <div class="exp-overlay">
+        <p class="exp-tag">Moments inoubliables</p>
+        <h3 class="exp-title">Couchers de soleil</h3>
+        <p class="exp-desc">Allongé sur les bains de soleil au bord de la piscine, regardez le soleil disparaître derrière les flamboyants dans un ciel incandescent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE — toutes les 12 photos vraies -->
+<section class="gallery-section" id="gallery">
+  <div style="text-align:center;padding:70px 0 40px;background:var(--green-dark)">
+    <p class="pre reveal" style="color:var(--beige);opacity:.8">Galerie</p>
+    <div class="divider divider-center reveal" style="background:var(--beige);opacity:.3"></div>
+    <h2 class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:#fff;font-weight:300">La Réserve en images</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gal-item reveal" onclick="openLB(0)"><img id="g0" src="" alt=""/><div class="gal-overlay"><span class="gal-plus">+</span></div></div>
+    <div class="gal-item reveal" onclick="openLB(1)"><img id="g1" src="" alt=""/><div class="gal-overlay"><span class="gal-plus">+</span></div></div>
+    <div class="gal-item reveal" onclick="openLB(2)"><img id="g2" src="" alt=""/><div class="gal-overlay"><span class="gal-plus">+</span></div></div>
+    <div class="gal-item reveal" onclick="openLB(3)"><img id="g3" src="" alt=""/><div class="gal-overlay"><span class="gal-plus">+</span></div></div>
+    <div class="gal-item reveal" onclick="openLB(4)"><img id="g4" src="" alt=""/><div class="gal-overlay"><span class="gal-plus">+</span></div></div>
+    <div class="gal-item reveal" onclick="openLB(5)"><img id="g5" src="" alt=""/><div class="gal-overlay"><span class="gal-plus">+</span></div></div>
+    <div class="gal-item reveal" onclick="openLB(6)"><img id="g6" src="" alt=""/><div class="gal-overlay"><span class="gal-plus">+</span></div></div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section class="testimonials">
+  <p class="pre reveal" style="color:var(--green)">Témoignages</p>
+  <div class="divider divider-center reveal"></div>
+  <h2 class="reveal">Ce que disent nos hôtes</h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">« Se réveiller avec les zèbres devant la fenêtre… impossible d'oublier ça. La Réserve est un endroit absolument magique, hors du temps. »</p>
+      <p class="testi-author">— Sophie & Marc D., Paris · Oct. 2024</p>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">« La piscine sous les palmiers, le feu de camp le soir avec les antilopes en arrière-plan… une expérience africaine authentique dans un confort absolu. »</p>
+      <p class="testi-author">— James & Clara R., Londres · Jan. 2025</p>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">« Chaque chambre est une œuvre d'art vivante. Les charpentes en branches, les baldaquins, la lumière dorée… La Réserve, c'est l'Afrique à son meilleur. »</p>
+      <p class="testi-author">— Isabelle M., Genève · Déc. 2024</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALISATION -->
+<section class="location" id="location">
+  <div class="location-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991949.2437393726!2d-17.43!3d14.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec172f5b3c5bb71%3A0xb17c17d92d5db21f!2sSénégal!5e0!3m2!1sfr!2sfr!4v1700000000000" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="location-info reveal">
+    <p class="pre">Comment nous rejoindre</p>
+    <div class="divider"></div>
+    <h2>Au cœur du Sénégal</h2>
+    <p>La Réserve est accessible depuis Dakar, idéalement situé entre savane et nature préservée.</p>
+    <div class="loc-items">
+      <div class="loc-item"><div class="loc-icon">✈</div><div class="loc-text"><strong>Aéroport</strong>45 min de l'Aéroport Blaise Diagne (DSS). Transferts privés disponibles.</div></div>
+      <div class="loc-item"><div class="loc-icon">🚗</div><div class="loc-text"><strong>En voiture</strong>Route goudronnée depuis Dakar (1h30). Chauffeur privé sur demande.</div></div>
+      <div class="loc-item"><div class="loc-icon">📞</div><div class="loc-text"><strong>Contact direct</strong>Contactez-nous pour organiser votre arrivée en toute sérénité.</div></div>
+    </div>
+    <a href="#booking" class="btn-primary">Planifier votre venue</a>
+  </div>
+</section>
+
+<!-- BOOKING — fond : piscine panoramique (img10) -->
+<section class="booking" id="booking">
+  <div class="booking-bg" id="bookingBg"></div>
+  <p class="pre reveal" style="color:var(--beige)">Votre séjour</p>
+  <div class="divider divider-center reveal" style="background:var(--beige);opacity:.5"></div>
+  <h2 class="reveal">Réservez votre escapade</h2>
+  <p class="sub reveal">Notre équipe vous accompagne pour créer un séjour sur mesure au cœur de la savane sénégalaise.</p>
+  <div class="booking-form reveal">
+    <input type="date" placeholder="ARRIVÉE"/>
+    <input type="date" placeholder="DÉPART"/>
+    <select>
+      <option value="">Choisir une chambre</option>
+      <option>Suite Dorée</option>
+      <option>Suite Baobab</option>
+      <option>Suite Rose</option>
+      <option>Chambre Tropicale</option>
+      <option>Suite Rotonde</option>
+      <option>Chambre Nature</option>
+    </select>
+    <button>Vérifier les disponibilités</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo-svg">
+                  <svg viewBox="0 0 793.70135 1122.52" xmlns="http://www.w3.org/2000/svg" style="height:52px;width:auto" fill="#f5e6a3">
+          <g transform="matrix(1.3333333,0,0,-1.3333333,0,1122.52)">
+            <g transform="translate(211.5215,511.5719)"><path d="m 0,0 c 0.945,2.859 1.944,40.276 -0.062,53.284 -3.395,22.008 -13.606,38.222 -29.174,50.371 -9.151,7.141 -19.657,10.624 -30.262,13.465 -4.117,1.102 -8.434,1.493 -12.673,1.628 -6.101,0.195 -10.474,-3.528 -11.709,-10.424 -0.809,-4.521 -1.007,-9.373 -0.594,-13.97 1.218,-13.566 6.327,-25.842 10.956,-38.055 C -65.907,36.22 -51.715,22.901 -36.039,11.708 -25.52,4.198 -0.43,0.164 0,0"/></g>
+            <g transform="translate(249.3384,477.861)"><path d="m 0,0 c 0.365,0.472 3.911,8.061 -1.008,12.98 -4.445,4.445 -9.232,7.592 -14.686,9.707 -3.369,1.306 -6.69,2.78 -10.044,4.139 -3.634,1.472 -5.916,2.397 -7.35,3.598 -0.695,-2.365 -0.352,-17.646 0.826,-22.907 2.151,-9.604 8.564,-15.785 16.299,-15.636 C -9.722,-7.999 -4.286,-5.536 0,0"/></g>
+            <g transform="translate(278.1001,671.0529)"><path d="m 0,0 c -1.398,9.375 -2.524,18.937 -5.109,27.905 -2.083,7.228 -5.401,14.422 -9.556,20.321 -6.29,8.93 -17.4,7.281 -22.195,-2.823 -2.199,-4.633 -3.565,-9.987 -4.493,-15.215 -1.689,-9.523 -0.166,-19.127 1.581,-28.408 4.006,-21.294 8.705,-42.416 12.982,-63.645 3.124,-15.501 6.677,-30.948 8.811,-46.635 1.652,-12.144 2.293,-24.683 1.735,-36.934 -0.5,-10.952 -8.355,-60.306 -3.354,-52.832 0.223,0.106 6.764,10.393 8.279,13.383 8.373,16.525 11.565,35.091 12.79,53.974 1.119,17.245 1.697,34.587 1.632,51.889 C 3.004,-52.654 3.907,-26.193 0,0"/></g>
+            <g transform="translate(254.1338,465.0963)"><path d="m 0,0 c -0.74,-0.534 -9.02,-14.854 -10.998,-18.628 -7.082,-13.517 -8.254,-29.34 -5.649,-46.429 3.802,-24.947 12.132,-46.753 23.034,-66.515 0.689,-1.248 2.124,-2.157 3.139,-2.116 0.558,0.022 1.298,2.269 1.391,3.666 1.326,20.011 2.607,34.746 2.565,54.951 C 13.39,-30.969 1.135,-1.13 0,0"/></g>
+            <g transform="translate(302.6504,632.8116)"><path d="m 0,0 c 1.763,-24.067 3.118,-48.137 4.508,-72.206 l 1.886,-36.104 1.571,-36.106 c 0.479,-12.035 1.42,-24.069 2.148,-36.103 0.729,-12.035 0.835,-24.071 0.259,-36.112 -0.563,-12.039 -1.517,-24.081 -2.926,-36.124 -1.464,-12.044 -3.235,-24.089 -6.217,-36.14 -0.143,-0.58 -0.73,-0.934 -1.31,-0.791 -0.4,0.1 -0.692,0.411 -0.789,0.783 -3.083,12.024 -4.958,24.053 -6.525,36.085 -1.51,12.031 -2.566,24.063 -3.232,36.098 -0.679,12.035 -0.675,24.072 -0.049,36.113 0.626,12.04 1.465,24.081 1.841,36.12 l 1.264,36.117 1.579,36.12 c 1.184,24.08 2.335,48.159 3.892,72.241 0.038,0.58 0.538,1.02 1.119,0.982 C -0.45,0.939 -0.037,0.516 0,0"/></g>
+            <g transform="translate(291.1812,334.1847)"><path d="m 0,0 c 5.327,-10.621 5.708,-21.204 0.854,-23.64 -4.856,-2.434 -13.109,4.202 -18.436,14.822 -5.327,10.621 -5.709,21.205 -0.854,23.639 C -13.58,17.257 -5.326,10.62 0,0"/></g>
+            <g transform="translate(265.3228,320.337)"><path d="m 0,0 c 6.092,-7.627 11.861,-15.033 18.201,-21.366 3.163,-3.135 6.458,-5.985 9.873,-8.071 3.405,-2.108 6.865,-3.346 10.123,-3.385 3.252,-0.068 6.605,0.973 9.947,3.051 1.682,0.997 3.31,2.25 4.927,3.624 1.61,1.37 3.183,2.89 4.724,4.49 6.199,6.44 11.706,14.102 17.942,21.657 -0.78,-4.856 -2.132,-9.547 -3.848,-14.15 -1.738,-4.593 -3.918,-9.064 -6.673,-13.335 -0.682,-1.069 -1.449,-2.103 -2.191,-3.154 -0.815,-1.011 -1.594,-2.042 -2.496,-3.014 -1.716,-1.998 -3.723,-3.828 -5.955,-5.509 -2.238,-1.67 -4.784,-3.102 -7.602,-4.151 -2.82,-1.028 -5.935,-1.575 -9.038,-1.504 -3.101,0.07 -6.155,0.724 -8.886,1.828 -2.73,1.117 -5.214,2.539 -7.41,4.197 -2.196,1.659 -4.175,3.462 -5.927,5.408 -1.776,1.92 -3.342,3.961 -4.776,6.05 -2.845,4.195 -5.138,8.617 -6.977,13.183 C 2.151,-9.576 0.689,-4.883 0,0"/></g>
+            <g transform="translate(393.2471,511.9928)"><path d="m 0,0 c -0.944,2.859 -1.944,40.276 0.062,53.284 3.395,22.008 13.606,38.222 29.174,50.371 9.151,7.14 19.657,10.624 30.261,13.464 4.118,1.103 8.435,1.493 12.675,1.629 6.1,0.195 10.474,-3.528 11.708,-10.424 0.809,-4.521 1.007,-9.373 0.594,-13.97 C 83.256,80.787 78.147,68.512 73.518,56.299 65.907,36.22 51.716,22.901 36.039,11.708 25.52,4.198 0.43,0.163 0,0"/></g>
+            <g transform="translate(355.4307,478.2819)"><path d="m 0,0 c -0.365,0.472 -3.912,8.061 1.008,12.98 4.445,4.445 9.232,7.592 14.685,9.707 3.369,1.306 6.691,2.78 10.045,4.139 3.633,1.471 5.915,2.397 7.35,3.598 C 33.783,28.059 33.44,12.778 32.262,7.517 30.111,-2.087 23.697,-8.268 15.963,-8.119 9.722,-7.999 4.285,-5.536 0,0"/></g>
+            <g transform="translate(326.6689,671.4738)"><path d="m 0,0 c 1.398,9.375 2.524,18.937 5.108,27.905 2.084,7.228 5.402,14.422 9.556,20.32 6.291,8.931 17.4,7.282 22.195,-2.822 2.2,-4.633 3.566,-9.987 4.494,-15.215 1.689,-9.523 0.166,-19.127 -1.581,-28.408 -4.006,-21.294 -8.706,-42.416 -12.983,-63.645 -3.123,-15.502 -6.677,-30.948 -8.81,-46.635 -1.653,-12.144 -2.293,-24.684 -1.735,-36.934 0.499,-10.952 8.355,-60.306 3.354,-52.832 -0.224,0.106 -6.764,10.393 -8.279,13.383 -8.374,16.525 -11.565,35.091 -12.791,53.973 -1.119,17.246 -1.697,34.588 -1.632,51.89 C -3.004,-52.654 -3.907,-26.193 0,0"/></g>
+            <g transform="translate(350.6348,465.5172)"><path d="m 0,0 c 0.74,-0.534 9.021,-14.854 10.998,-18.628 7.082,-13.517 8.255,-29.34 5.649,-46.429 -3.802,-24.947 -12.132,-46.754 -23.035,-66.515 -0.687,-1.248 -2.123,-2.157 -3.138,-2.116 -0.558,0.022 -1.298,2.269 -1.391,3.666 -1.325,20.011 -2.607,34.746 -2.564,54.951 C -13.39,-30.969 -1.136,-1.13 0,0"/></g>
+            <g transform="translate(313.5879,334.6056)"><path d="m 0,0 c -5.327,-10.621 -5.709,-21.205 -0.854,-23.64 4.855,-2.434 13.109,4.202 18.436,14.822 5.326,10.621 5.708,21.205 0.853,23.639 C 13.58,17.256 5.326,10.62 0,0"/></g>
+          </g>
+        </svg>
+        <div class="logo-text-wrap"><span class="logo-name">La Réserve</span><span class="logo-sub">Guest House & Memories</span></div>
+      </a>
+      <p>Un guest house d'exception au Sénégal, où la faune africaine partage votre quotidien dans un cadre naturel préservé.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/la_reserve_senegal/" target="_blank">Instagram</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Chambres</h4><ul><li><a href="#">Suite Dorée</a></li><li><a href="#">Suite Baobab</a></li><li><a href="#">Suite Rose</a></li><li><a href="#">Chambre Tropicale</a></li></ul></div>
+    <div class="footer-col"><h4>Expériences</h4><ul><li><a href="#">Safari sur le domaine</a></li><li><a href="#">Piscines & détente</a></li><li><a href="#">Feu de camp</a></li><li><a href="#">Événements privés</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:contact@lareserve.sn">contact@lareserve.sn</a></li><li><a href="tel:+221777000000">+221 77 700 00 00</a></li><li><a href="#">Sénégal</a></li><li><a href="#">Mentions légales</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 La Réserve Sénégal · Tous droits réservés</span>
+    <span style="font-size:.58rem">Designed with ♥ in Dakar</span>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// INJECTION DES VRAIES PHOTOS via l'API window.fs de Claude
+// ═══════════════════════════════════════════════════════════
+
+// Mapping : nom de fichier → IDs des éléments à remplir
+// Photos reçues dans l'ordre d'envoi :
+// [0] zèbres + lodge, [1] suite dorée intérieur, [2] coucher soleil,
+// [3] suite rose, [4] espace feu de camp, [5] piscine couverte (pool bar),
+// [6] suite baobab angle, [7] grand salon, [8] piscine bleue palmiers,
+// [9] piscine panoramique, [10] piscine longue palmiers, [11] antilopes
+
+async function loadAndInject() {
+  // On récupère toutes les images uploadées dans la conversation
+  // via window.fs.readFile si disponible
+  const assignments = [
+    // img0 → zèbres + lodge : hero s0, intro, galerie g0
+    { targets: ['#s0','#introImg','#g0'], type:'bg_and_img', positions:['bg','img','img'] },
+    // img1 → suite dorée intérieur : chambre rc1, galerie g1
+    { targets: ['#rc1','#g1'], type:'img' },
+    // img2 → coucher soleil : hero s2, exp3, galerie g2
+    { targets: ['#s2','#exp3','#g2'], type:'bg_and_img', positions:['bg','img','img'] },
+    // img3 → suite rose : chambre rc3, galerie g3
+    { targets: ['#rc3','#g3'], type:'img' },
+    // img4 → espace feu de camp : expériences exp2 partiel, galerie g4
+    { targets: ['#g4'], type:'img' },
+    // img5 → piscine couverte palmiers : exp1, galerie g5
+    { targets: ['#exp1','#g5'], type:'img' },
+    // img6 → suite baobab (autre angle) : rc2, galerie g6
+    { targets: ['#rc2','#g6'], type:'img' },
+    // img7 → grand salon : rc4
+    { targets: ['#rc4'], type:'img' },
+    // img8 → piscine bleue palmiers : hero s1, galerie
+    { targets: ['#s1'], type:'bg' },
+    // img9 → piscine panoramique : booking bg, exp1 override si mieux
+    { targets: ['#bookingBg'], type:'bg' },
+    // img10 → piscine longue palmiers : exp2
+    { targets: ['#exp2'], type:'img' },
+    // img11 → antilopes : galerie supplémentaire
+    { targets: [], type:'none' },
+  ];
+
+  // Tentative de récupération des images depuis le contexte Claude
+  try {
+    const files = await window.fs?.readdir?.('/uploads') || [];
+    const imgFiles = files.filter(f => /\.(jpg|jpeg|png|webp)/i.test(f)).sort();
+    
+    for(let i = 0; i < Math.min(imgFiles.length, assignments.length); i++) {
+      try {
+        const data = await window.fs.readFile('/uploads/' + imgFiles[i]);
+        const blob = new Blob([data], {type: 'image/jpeg'});
+        const url = URL.createObjectURL(blob);
+        applyUrl(url, assignments[i]);
+      } catch(e) { /* fichier non lisible */ }
+    }
+  } catch(e) {
+    // Fallback : tentative via parent DOM (images blob du chat)
+    tryParentImages(assignments);
+  }
+}
+
+function applyUrl(url, assignment) {
+  if (!assignment || assignment.type === 'none') return;
+  assignment.targets.forEach((sel, idx) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    const pos = assignment.positions ? assignment.positions[idx] : assignment.type;
+    if (pos === 'bg') {
+      el.style.backgroundImage = `linear-gradient(rgba(20,45,30,.45),rgba(15,35,22,.58)),url('${url}')`;
+      el.style.backgroundSize = 'cover';
+      el.style.backgroundPosition = 'center';
+    } else {
+      el.src = url;
+    }
+  });
+}
+
+function tryParentImages(assignments) {
+  try {
+    const pImgs = Array.from(
+      window.parent?.document?.querySelectorAll?.('img[src^="blob:"], img[src^="data:image"]') || []
+    );
+    if (pImgs.length === 0) return;
+    pImgs.forEach((pImg, i) => {
+      if (i < assignments.length) applyUrl(pImg.src, assignments[i]);
+    });
+  } catch(e) {}
+}
+
+// ═══════════════════════════════════════════════════════════
+// SLIDESHOW
+// ═══════════════════════════════════════════════════════════
+let cur = 0;
+const slides = document.querySelectorAll('.slide'), dots = document.querySelectorAll('.dot');
+function goSlide(n) {
+  slides[cur].classList.remove('active'); dots[cur].classList.remove('active');
+  cur = n; slides[cur].classList.add('active'); dots[cur].classList.add('active');
+}
+setInterval(() => goSlide((cur + 1) % slides.length), 5500);
+
+// ═══════════════════════════════════════════════════════════
+// SCROLL REVEAL + NAV
+// ═══════════════════════════════════════════════════════════
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ═══════════════════════════════════════════════════════════
+// LIGHTBOX
+// ═══════════════════════════════════════════════════════════
+let lbIdx = 0, lbSrcs = [];
+function buildSrcs() {
+  lbSrcs = ['g0','g1','g2','g3','g4','g5','g6'].map(id => {
+    const el = document.getElementById(id);
+    return el?.src || '';
+  }).filter(Boolean);
+}
+function openLB(i) {
+  buildSrcs(); lbIdx = i;
+  document.getElementById('lb-img').src = lbSrcs[i];
+  document.getElementById('lb-counter').textContent = (i+1) + ' / ' + lbSrcs.length;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLB() {
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbNav(d) {
+  lbIdx = (lbIdx + d + lbSrcs.length) % lbSrcs.length;
+  document.getElementById('lb-img').src = lbSrcs[lbIdx];
+  document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + lbSrcs.length;
+}
+document.getElementById('lb').addEventListener('click', e => {
+  if (e.target === document.getElementById('lb')) closeLB();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLB();
+  if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === 'ArrowLeft') lbNav(-1);
+});
+
+// ═══════════════════════════════════════════════════════════
+// MOBILE MENU
+// ═══════════════════════════════════════════════════════════
+function toggleMenu() {
+  const n = document.querySelector('.nav-links');
+  n.style.cssText = n.style.display === 'flex' ? ''
+    : 'display:flex;flex-direction:column;position:fixed;top:65px;left:0;right:0;background:rgba(30,69,48,.97);padding:32px;gap:24px;backdrop-filter:blur(12px);z-index:99';
+}
+
+// ═══════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════
+window.addEventListener('load', () => {
+  loadAndInject();
+  setTimeout(() => {
+    document.getElementById('loading').classList.add('done');
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  }, 2000);
+});
+</script>
+</body>
+</html>
