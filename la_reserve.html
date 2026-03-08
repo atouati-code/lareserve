@@ -317,7 +317,7 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
   <div class="stat reveal"><div class="stat-num">5★</div><div class="stat-label">Expérience client</div></div>
 </section>
 
-<!-- ROOMS — 7 chambres avec vrais noms -->
+<!-- ROOMS -->
 <section class="rooms-showcase" id="rooms">
   <div class="section-header reveal">
     <p class="pre">Hébergements</p>
@@ -325,7 +325,6 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
     <h2>Nos chambres & suites</h2>
   </div>
 
-  <!-- 01 Girafe -->
   <div class="room-feature reveal">
     <div class="room-img"><img id="rc1" src="" alt="Chambre Girafe"/></div>
     <div class="room-body">
@@ -340,7 +339,6 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
     </div>
   </div>
 
-  <!-- 02 Cerf -->
   <div class="room-feature reverse reveal">
     <div class="room-img"><img id="rc2" src="" alt="Chambre Cerf"/></div>
     <div class="room-body">
@@ -355,14 +353,13 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
     </div>
   </div>
 
-  <!-- 03 Girafons -->
   <div class="room-feature reveal">
     <div class="room-img"><img id="rc3" src="" alt="Chambre Girafons"/></div>
     <div class="room-body">
       <div class="room-num">03</div>
       <p class="room-tag">Chambre familiale</p>
       <h3 class="room-name">Girafons</h3>
-      <p class="room-desc">Lumineuse et chaleureuse, la chambre Girafons joue avec les tons corail et blanc. Son lit à baldaquin dressé face aux grandes fenêtres et son pouf sculptural créent une atmosphère à la fois douce et élégante.</p>
+      <p class="room-desc">Légère et gracieuse comme l'animal qui lui prête son nom, la chambre Girafons déploie ses tons dorés et ses voilages aériens dans un volume chaleureux. Une adresse intime pour les amoureux de la nature africaine.</p>
       <div class="room-amenities">
         <span class="amenity">Grandes fenêtres</span><span class="amenity">Coin salon</span>
         <span class="amenity">Tapis berbère</span><span class="amenity">Décor naturel</span>
@@ -370,7 +367,6 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
     </div>
   </div>
 
-  <!-- 04 Nyala -->
   <div class="room-feature reverse reveal">
     <div class="room-img"><img id="rc4" src="" alt="Chambre Nyala"/></div>
     <div class="room-body">
@@ -385,7 +381,6 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
     </div>
   </div>
 
-  <!-- 05 Zèbre -->
   <div class="room-feature reveal">
     <div class="room-img"><img id="rc5" src="" alt="Chambre Zèbre"/></div>
     <div class="room-body">
@@ -400,14 +395,13 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
     </div>
   </div>
 
-  <!-- 06 Impala -->
   <div class="room-feature reverse reveal">
     <div class="room-img"><img id="rc6" src="" alt="Chambre Impala"/></div>
     <div class="room-body">
       <div class="room-num">06</div>
       <p class="room-tag">Chambre élégance</p>
       <h3 class="room-name">Impala</h3>
-      <p class="room-desc">Légère et gracieuse comme l'animal qui lui prête son nom, la chambre Impala déploie ses tons dorés et ses voilages aériens dans un volume chaleureux. Une adresse intime pour les amoureux de la nature africaine.</p>
+      <p class="room-desc">Lumineuse et chaleureuse, la chambre Impala joue avec les tons corail et blanc. Son lit à baldaquin dressé face aux grandes fenêtres et son pouf sculptural créent une atmosphère à la fois douce et élégante.</p>
       <div class="room-amenities">
         <span class="amenity">Tons dorés</span><span class="amenity">Voilages aériens</span>
         <span class="amenity">Clim & ventilateur</span><span class="amenity">Salle de bain en pierre</span>
@@ -415,7 +409,6 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
     </div>
   </div>
 
-  <!-- 07 Koba -->
   <div class="room-feature reveal">
     <div class="room-img"><img id="rc7" src="" alt="Chambre Koba"/></div>
     <div class="room-body">
@@ -535,19 +528,9 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
   <h2 class="reveal">Réservez votre escapade</h2>
   <p class="sub reveal">Notre équipe vous accompagne pour créer un séjour sur mesure au cœur de la savane sénégalaise.</p>
   <div class="booking-form reveal">
-    <input type="date" placeholder="ARRIVÉE"/>
-    <input type="date" placeholder="DÉPART"/>
-    <select>
-      <option value="">Choisir une chambre</option>
-      <option>Girafe</option>
-      <option>Cerf</option>
-      <option>Girafons</option>
-      <option>Nyala</option>
-      <option>Zèbre</option>
-      <option>Impala</option>
-      <option>Koba</option>
-    </select>
-    <button>Vérifier les disponibilités</button>
+    <input type="date" id="dateArrivee" placeholder="ARRIVÉE"/>
+    <input type="date" id="dateDepart" placeholder="DÉPART"/>
+    <button onclick="envoyerReservation()">Vérifier les disponibilités</button>
   </div>
 </section>
 
@@ -577,7 +560,6 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
       <p>Un guest house d'exception au Sénégal, où la faune africaine partage votre quotidien dans un cadre naturel préservé.</p>
       <div class="social-links">
         <a href="https://www.instagram.com/la_reserve_senegal/" target="_blank">Instagram</a>
-        <a href="#">Facebook</a>
       </div>
     </div>
     <div class="footer-col"><h4>Chambres</h4><ul>
@@ -597,13 +579,13 @@ footer{background:var(--green-dark);padding:80px 56px 36px}
     </ul></div>
     <div class="footer-col"><h4>Contact</h4><ul>
       <li><a href="mailto:contact@lareserve.sn">contact@lareserve.sn</a></li>
-      <li><a href="tel:+221777000000">+221 77 700 00 00</a></li>
+      <li><a href="tel:+221778729898">+221 77 872 98 98</a></li>
       <li><a href="#">Sénégal</a></li>
       <li><a href="#">Mentions légales</a></li>
     </ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 La Réserve Sénégal · Tous droits réservés</span>
+    <span>© 2026 La Réserve Sénégal · Tous droits réservés</span>
     <span style="font-size:.58rem">Designed with ♥ in Dakar</span>
   </div>
 </footer>
@@ -636,29 +618,20 @@ function setBg(sel, url) {
 }
 
 function loadAndInject() {
-  // Hero slides
   setBg('#s0', IMGS.zebres);
   setBg('#s1', IMGS.piscine);
   setBg('#s2', IMGS.soleil);
-
-  // Intro
   setImg('#introImg', IMGS.zebres);
-
-  // Chambres (fallback girafe pour celles sans photo encore)
-  setImg('#rc1', IMGS.girafe);   // Girafe
-  setImg('#rc2', fallback);      // Cerf
-  setImg('#rc3', fallback);      // Girafons
-  setImg('#rc4', IMGS.nyala);    // Nyala
-  setImg('#rc5', fallback);      // Zèbre
-  setImg('#rc6', fallback);      // Impala
-  setImg('#rc7', IMGS.koba);     // Koba
-
-  // Expériences
+  setImg('#rc1', IMGS.girafe);
+  setImg('#rc2', fallback);
+  setImg('#rc3', fallback);
+  setImg('#rc4', IMGS.nyala);
+  setImg('#rc5', fallback);
+  setImg('#rc6', fallback);
+  setImg('#rc7', IMGS.koba);
   setImg('#exp1', IMGS.piscine);
   setImg('#exp2', IMGS.zebres);
   setImg('#exp3', IMGS.soleil);
-
-  // Galerie
   setImg('#g0', IMGS.zebres);
   setImg('#g1', IMGS.girafe);
   setImg('#g2', IMGS.piscine);
@@ -666,8 +639,6 @@ function loadAndInject() {
   setImg('#g4', IMGS.feu);
   setImg('#g5', IMGS.nyala);
   setImg('#g6', IMGS.koba);
-
-  // Booking background
   setBg('#bookingBg', IMGS.salon);
 }
 
@@ -715,6 +686,18 @@ document.addEventListener('keydown', e => {
   if (e.key==='ArrowRight') lbNav(1);
   if (e.key==='ArrowLeft') lbNav(-1);
 });
+
+function envoyerReservation() {
+  const arrivee = document.getElementById('dateArrivee').value;
+  const depart = document.getElementById('dateDepart').value;
+  if (!arrivee || !depart) {
+    alert('Veuillez sélectionner vos dates d\'arrivée et de départ.');
+    return;
+  }
+  const fmt = d => d.split('-').reverse().join('-');
+  const sujet = `Demande de réservation du ${fmt(arrivee)} au ${fmt(depart)}`;
+  window.location.href = `mailto:reservations@lareserve.sn?subject=${encodeURIComponent(sujet)}`;
+}
 
 function toggleMenu() {
   const n = document.querySelector('.nav-links');
